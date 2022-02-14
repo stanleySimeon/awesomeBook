@@ -5,23 +5,22 @@ class BookCollection {
     constructor(container) {
         this.books = [];
         this.container = container;
-        this.check_storage('localStorage');
-        this.storage = false;
-
-        this.initialData();
         this.books.forEach((book) => this.add_to_page(book));
+        this.check_storage('localStorage');
+        this.initialData();
+        this.storage = null;
     }
 
     add_to_page(data) {
-        const { id, title, author } = data;
+        const {title, author } = data;
 
         this.container.innerHTML += `
-    <li>
-      <h3>Title: ${title}</h3>
-      <p>Author: ${author}</p>
+    <div>
+      <h3>${title}</h3>
+      <p>${author}</p>
       <button class="removeBookBtn">Remove</button>
       <hr>
-      </li>
+      </div>
     `;
         this.updateEventListeners(this.container);
     }
@@ -102,3 +101,4 @@ initialData.addEventListener('submit', (e) => {
     initialData.title.value = '';
     initialData.author.value = '';
 });
+
