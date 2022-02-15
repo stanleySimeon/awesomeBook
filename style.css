@@ -1,38 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,200&display=swap');
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
 
-header{
+header {
   text-align: center;
   padding: 20px;
 }
 
-body{
+body {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-#section_list{
+#section_list {
   display: flex;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
   width: 95%;
   min-height: 40px;
   border: 2px solid black;
 }
 
-#book_list{
+#book_list {
   width: 100%;
 }
 
-#book_list li{
+#book_list li {
   width: 99%;
   height: 30px;
   margin: 5px auto;
@@ -42,29 +42,29 @@ body{
   align-items: center;
 }
 
-._title{
+._title {
   width: 30%;
   padding-left: 5px;
 }
 
-._author{
+._author {
   width: 50%;
   padding-left: 5px;
 }
 
-.rm_book{
+.rm_book {
   width: 70px;
   height: 30px;
 }
 
-._bar{
+._bar {
   width: 200px;
   height: 3px;
   background: black;
   margin: 50px auto;
 }
 
-#add_section{
+#add_section {
   width: 40%;
   height: auto;
   display: flex;
@@ -73,15 +73,15 @@ body{
   align-items: center;
 }
 
-#_add_book{
+#_add_book {
   width: 70%;
-  height:auto;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-#_add_book input{
+#_add_book input {
   height: 30px;
   width: 100%;
   outline: none;
@@ -90,7 +90,7 @@ body{
   margin: 10px auto;
 }
 
-#_add_book button{
+#_add_book button {
   width: 50px;
   height: 30px;
   align-self: flex-end;
