@@ -1,104 +1,67 @@
-const book_list = document.getElementById('book_list');
-const initialData = document.getElementById('initialData');
+const book_container = document.getElementById('book_container');
+const f_title = document.forms[0].title;
+const f_author = document.forms[0].author;
+const addBtn = document.forms[0].add;
 
-class BookCollection {
-    constructor(container) {
-        this.books = [];
-        this.container = container;
-        this.books.forEach((book) => this.add_to_page(book));
-        this.check_storage('localStorage');
-        this.initialData();
-        this.storage = null;
-    }
+const stored_books = JSON.parse(localStorage.getItem('storedBook'));
+const awesome_books = stored_books || [];
 
-    add_to_page(data) {
-        const {title, author } = data;
+const add_book = (book) => {
+    const _title = document.createElement('p');
+    const _author = document.createElement('p');
+    const new_book = document.createElement('div');
+    const button = document.createElement('button');
+    const hr = document.createElement('hr');
 
-        this.container.innerHTML += `
-    <div>
-      <h3>${title}</h3>
-      <p>${author}</p>
-      <button class="removeBookBtn">Remove</button>
-      <hr>
-      </div>
-    `;
-        this.updateEventListeners(this.container);
-    }
+    _title.classList.add('title');
+    _author.classList.add('author');
+    button.classList.add('remove');
 
-    addBook(data) {
-        const { title, author } = data;
+    _title.textContent = book.title;
+    _author.textContent = book.author;
+    button.textContent = 'Remove';
 
-        this.books.push({
-            title,
-            author,
-        });
+    new_book.appendChild(_title);
+    new_book.appendChild(_author);
+    new_book.appendChild(button);
+    new_book.appendChild(hr);
 
-        this.u_storage();
+    book_container.appendChild(new_book);
+};
 
-        this.add_to_page(data);
-    }
-
-    updateEventListeners(element = document) {
-        const remove_btn = element.querySelectorAll('.removeBookBtn');
-
-        remove_btn.forEach((removeBtn) => {
-            removeBtn.addEventListener('click', (e) => {
-                const { parentNode } = e.target;
-                this.removeBook(parentNode.title);
-                parentNode.remove();
-            });
-        });
-    }
-
-    removeBook(title) {
-        this.books = this.books.filter((book) => book.title !== title);
-        this.u_storage();
-    }
-
-    initialData() {
-        if (this.storage) {
-            const l_data = window.localStorage.get_book('books');
-            if (l_data) {
-                this.books = JSON.parse(l_data);
-            }
-        }
-    }
-
-    check_storage(type) {
-        let storage;
-        try {
-            storage = window[type];
-            const x = '__storage_test__';
-            storage.set_book(x, x);
-            storage.remove_book(x);
-            this.storage = true;
-        } catch (e) {
-            this.storage = false;
-        }
-    }
-
-    u_storage() {
-        if (this.storage) {
-            const storage = window.localStorage;
-            storage.set_book('books', JSON.stringify(this.books));
-        }
-    }
-}
-
-const bookCollection = new BookCollection(book_list);
-
-initialData.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const title = initialData.title.value.trim();
-    const author = initialData.author.value.trim();
-
-    bookCollection.addBook({
-        title,
-        author,
-    });
-
-    initialData.title.value = '';
-    initialData.author.value = '';
+awesome_books.forEach((book) => {
+    add_book(book);
 });
 
+addBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const new_book = {
+        title: f_title.value,
+        author: f_author.value,
+    };
+    awesome_books.push(new_book);
+    localStorage.setItem('storedBook', JSON.stringify(awesome_books));
+
+    add_book(new_book);
+
+    f_title.value = '';
+    f_author.value = '';
+});
+
+const rm_book = (e) => {
+    if (e.target.classList.contains('remove')) {
+        const removing_book = awesome_books.find(
+            (book) => book.title === e.target.parentElement.firstChild.textContent,
+        );
+
+        awesome_books.splice(awesome_books.indexOf(removing_book), 1);
+        localStorage.setItem('storedBook', JSON.stringify(awesome_books));
+
+        book_container.innerHTML = '';
+        awesome_books.forEach((book) => {
+            add_book(book);
+        });
+    }
+};
+
+book_container.addEventListener('click', rm_book);
