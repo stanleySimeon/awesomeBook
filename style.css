@@ -1,5 +1,97 @@
-/* Awesome Book Project */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,200&display=swap');
+
 * {
-  margin: 5px;
+  margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#section_list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  min-height: 40px;
+  border: 2px solid black;
+}
+
+#book_list {
+  width: 100%;
+}
+
+#book_list li {
+  width: 99%;
+  height: 30px;
+  margin: 5px auto;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+._title {
+  width: 30%;
+  padding-left: 5px;
+}
+
+._author {
+  width: 50%;
+  padding-left: 5px;
+}
+
+.rm_book {
+  width: 70px;
+  height: 30px;
+}
+
+._bar {
+  width: 200px;
+  height: 3px;
+  background: black;
+  margin: 50px auto;
+}
+
+#add_section {
+  width: 40%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#_add_book {
+  width: 70%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#_add_book input {
+  height: 30px;
+  width: 100%;
+  outline: none;
+  padding: 5px;
+  border: 1px solid #000;
+  margin: 10px auto;
+}
+
+#_add_book button {
+  width: 50px;
+  height: 30px;
+  align-self: flex-end;
 }

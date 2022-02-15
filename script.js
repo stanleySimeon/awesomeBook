@@ -1,67 +1,108 @@
-const book_container = document.getElementById('book_container');
-const f_title = document.forms[0].title;
-const f_author = document.forms[0].author;
-const addBtn = document.forms[0].add;
+const list = document.getElementById('book_list');
+const _add_book = document.getElementById('_add_book');
 
-const stored_books = JSON.parse(localStorage.getItem('storedBook'));
-const awesome_books = stored_books || [];
+class book_Collection {
+    constructor(books_container) {
+        this.books = [];
+        this.books_container = books_container;
+        this._storage = false;
+        this._check_storage('localStorage');
+        this._init_data();
+        this.books.forEach((book) => this.add_to_page(book));
+    }
 
-const add_book = (book) => {
-    const _title = document.createElement('p');
-    const _author = document.createElement('p');
-    const new_book = document.createElement('div');
-    const button = document.createElement('button');
-    const hr = document.createElement('hr');
+    add_to_collection(data) {
+        const { id, title, author } = data;
+        this.books.push({
+            id,
+            title,
+            author,
+        });
 
-    _title.classList.add('title');
-    _author.classList.add('author');
-    button.classList.add('remove');
+        this._u_storage();
+        this.add_to_page(data);
+    }
 
-    _title.textContent = book.title;
-    _author.textContent = book.author;
-    button.textContent = 'Remove';
+    add_to_page(data) {
+        const { id, title, author } = data;
 
-    new_book.appendChild(_title);
-    new_book.appendChild(_author);
-    new_book.appendChild(button);
-    new_book.appendChild(hr);
+        this.books_container.innerHTML += `
+    <li id ="${id}">
+    <div class="_title">
+      <h3>"${title}"</h3>
+      </div>
+      <div class="_author">
+      <p><b><i>By : </b>${author}</i></p>
+      </div>
+      <button class="rm_book">Remove</button>
+    </li>
+    `;
 
-    book_container.appendChild(new_book);
-};
+        this.updateEventListeners(this.books_container);
+    }
 
-awesome_books.forEach((book) => {
-    add_book(book);
-});
+    updateEventListeners(element = document) {
+        const _rm_btn = element.querySelectorAll('.rm_book');
 
-addBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    const new_book = {
-        title: f_title.value,
-        author: f_author.value,
-    };
-    awesome_books.push(new_book);
-    localStorage.setItem('storedBook', JSON.stringify(awesome_books));
-
-    add_book(new_book);
-
-    f_title.value = '';
-    f_author.value = '';
-});
-
-const rm_book = (e) => {
-    if (e.target.classList.contains('remove')) {
-        const removing_book = awesome_books.find(
-            (book) => book.title === e.target.parentElement.firstChild.textContent,
-        );
-
-        awesome_books.splice(awesome_books.indexOf(removing_book), 1);
-        localStorage.setItem('storedBook', JSON.stringify(awesome_books));
-
-        book_container.innerHTML = '';
-        awesome_books.forEach((book) => {
-            add_book(book);
+        _rm_btn.forEach((_rmBtn) => {
+            _rmBtn.addEventListener('click', (e) => {
+                const { parentNode } = e.target;
+                this.rm_book(parentNode.id);
+                parentNode.remove();
+            });
         });
     }
-};
 
-book_container.addEventListener('click', rm_book);
+    rm_book(id) {
+        this.books = this.books.filter((book) => book.id !== id);
+        this._u_storage();
+    }
+
+    _init_data() {
+        if (this._storage) {
+            const localData = window.localStorage.getItem('books');
+            if (localData) {
+                this.books = JSON.parse(localData);
+            }
+        }
+    }
+
+    _check_storage(type) {
+        let storage;
+        try {
+            storage = window[type];
+            const st = '_test_storage_';
+            storage.setItem(st, st);
+            storage.rm_item(st);
+            this._storage = true;
+        } catch (e) {
+            this._storage = false;
+        }
+    }
+
+    _u_storage() {
+        if (this._storage) {
+            const storage = window.localStorage;
+            storage.setItem('books', JSON.stringify(this.books));
+        }
+    }
+}
+
+const book_collection = new book_Collection(list);
+
+_add_book.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const id = Date.now().toString();
+    const title = _add_book.title.value.trim();
+    const author = _add_book.author.value.trim();
+
+    book_collection.add_to_collection({
+        id,
+        title,
+        author,
+    });
+
+    _add_book.title.value = '';
+    _add_book.author.value = '';
+});
