@@ -71,9 +71,9 @@ class book_Collection {
         let storage;
         try {
             storage = window[type];
-            const x = '_test_storage_';
-            storage.setItem(x, x);
-            storage.rm_item(x);
+            const st = '_test_storage_';
+            storage.setItem(st, st);
+            storage.rm_item(st);
             this._storage = true;
         } catch (e) {
             this._storage = false;
@@ -106,4 +106,3 @@ _add_book.addEventListener('submit', (e) => {
     _add_book.title.value = '';
     _add_book.author.value = '';
 });
-
