@@ -27,9 +27,9 @@ To get a local copy up and running follow these simple example steps.
 
 
 👤 **Author II**
-- 
-- 
-- 
+- Temesgen Gebregziabhr
+- GitHub: [@NatiG25](https://github.com/NatiG25)
+- Twitter: [@NatiG87702270](https://twitter.com/NatiG87702270)
 
 ## 🤝 Contributing
 
