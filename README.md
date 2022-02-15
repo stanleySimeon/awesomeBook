@@ -25,12 +25,6 @@ To get a local copy up and running follow these simple example steps.
 - GitHub: [https://github.com/mstanley-me]
 - LinkedIn: [https://www.linkedin.com/in/stanley-simeon-881091224/]
 
-
-👤 **Author II**
-- 
-- 
-- 
-
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
