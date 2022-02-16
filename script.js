@@ -54,7 +54,7 @@ class book_Collection {
     }
 
     rm_book(id) {
-        this.books = this.books.filter((book) => book.id !== id);
+        this.books = this.books.filter((book) => book.id = id === false);
         this._u_storage();
     }
 
