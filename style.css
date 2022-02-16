@@ -7,11 +7,6 @@
   font-family: 'Poppins', sans-serif;
 }
 
-header {
-  text-align: center;
-  padding: 20px;
-}
-
 body {
   display: flex;
   flex-direction: column;
@@ -19,20 +14,91 @@ body {
   align-items: center;
 }
 
-#section_list {
+header {
+  width: 98%;
+  padding: 20px;
+  margin-bottom: -15px;
+}
+
+main {
+  width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+#navbar {
+  width: 100%;
+  height: 40px;
+  padding: 20px;
+  border: 2px solid #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#navbar ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  gap: 30px;
+}
+
+#navbar ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+#navbar ul li a:focus {
+  color: rgb(4, 103, 233);
+}
+
+#navbar ul li a:active {
+  color: rgb(4, 103, 233);
+}
+
+#navbar ul li:nth-child(1) {
+  width: 70px;
+  border-right: 2px solid #000;
+}
+
+#navbar ul li:nth-child(2) {
+  width: 70px;
+  border-right: 2px solid #000;
+}
+
+#date {
   width: 95%;
+  height: 25px;
+  padding: 5px;
+  margin: auto;
+  display: flex;
+  justify-content: flex-end;
+  color: #000;
+}
+
+#section_list {
+  width: 95%;
+  text-align: center;
+}
+
+#section_list h1,
+#add_section h1,
+#contact_section h1 {
+  margin: 80px 0 20px 0;
+  font-size: 2rem;
+}
+
+#book_list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   min-height: 40px;
   border: 2px solid black;
 }
 
-#book_list {
-  width: 100%;
-}
-
-#book_list li {
+#section_list #book_list li {
   width: 99%;
   height: 30px;
   margin: 5px auto;
@@ -45,23 +111,18 @@ body {
 ._title {
   width: 30%;
   padding-left: 5px;
+  text-align: start;
 }
 
 ._author {
-  width: 50%;
+  width: 64%;
   padding-left: 5px;
+  text-align: start;
 }
 
 .rm_book {
   width: 70px;
   height: 30px;
-}
-
-._bar {
-  width: 200px;
-  height: 3px;
-  background: black;
-  margin: 50px auto;
 }
 
 #add_section {
@@ -75,6 +136,7 @@ body {
 
 #_add_book {
   width: 70%;
+  margin-top: 80px;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -94,4 +156,34 @@ body {
   width: 50px;
   height: 30px;
   align-self: flex-end;
+}
+
+#contact_section h1 {
+  margin-top: 80px;
+  text-align: center;
+}
+
+#contact_section .contact_info_container {
+  margin-top: 80px;
+}
+
+#contact_section .contact_info_container ul {
+  margin: 20px 40px auto;
+}
+
+.footer {
+  position: absolute;
+  width: 95%;
+  height: 40px;
+  padding: 0 20px;
+  margin: auto;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  border: 2px solid #000;
+  bottom: 10px;
+}
+
+._display_f_ {
+  display: none !important;
 }
