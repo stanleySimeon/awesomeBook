@@ -9,23 +9,51 @@
     <title>Awesome - Books</title>
 </head>
 
-<body>
+<body onload="displayDate()">
     <header>
-        <h1>All awesome books</h1>
+        <nav id="navbar">
+            <h1>Awesome Books</h1>
+            <ul id="menu">
+                <li><a id="link_list" href="#">List</a></li>
+                <li><a id="add_link" href="#">Add</a></li>
+                <li><a id="contact_link" href="#">Contact</a></li>
+            </ul>
+        </nav>
     </header>
-    <section id="section_list">
-        <ul id="book_list">   
-        </ul>
-    </section>
-    <div class="_bar"></div>
-    <section id="add_section">
-        <h2>Add a new book</h2>
-        <form id="_add_book">
-            <input type="text" name="title" placeholder="Title" />
-            <input type="text" name="author" placeholder="Author" />
-            <button type="submit" id="AddBtn" value="Add New Book">Add</button>
-        </form>
-    </section>
+    <main>
+        <div id="date"></div>
+        <section id="section_list" class="book_container">
+            <h1>All awesome books</h1>
+            <ul id="book_list">
+            </ul>
+        </section>
+        <section id="add_section" class="_display_f_">
+            <h1>Add a new book</h1>
+            <form id="_add_book">
+                <input type="text" name="title" placeholder="Title" />
+                <input type="text" name="author" placeholder="Author" />
+                <button type="submit" id="AddBtn">Add</button>
+            </form>
+        </section>
+        <section id="contact_section" class="_display_f_">
+            <h1>Contact information</h1>
+            <div class="contact_info_container">
+                <p>
+                    Do have any question or you just want to say "Hello"?
+                    <br>
+                    You can reach out to us!
+                </p>
+                <ul>
+                    <li>Our email: mail@mail.com</li>
+                    <li>Our phone number: +000372989076</li>
+                    <li>Our address: main street 22, 84503 city, country</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>&copy; copyright @ Stanley - Nati 2022</p>
+    </footer>
     <script src="./script.js"></script>
 </body>
 
