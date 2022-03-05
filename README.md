@@ -1,24 +1,19 @@
-# AWESOME BOOK
-
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-Additional description about the project and its features.
+# AWESOME BOOK
 
-- In this project, we had build a basic website that allows users to add/remove books from a list. we achieved that by using JavaScript objects and arrays. we also make it dynamic by modifying the DOM and add basic events.
+>In this project, we had build a basic website that allows users to add/remove books from a list. we achieved that by using JavaScript objects and arrays. we also make it dynamic by modifying the DOM and add basic events.
 ## Built With
 
 - HTML 
-- javaScript
-- Linters
+- JavaScript
+- CSS
+- Vscode
 
 ## Live Demo
 
 - [Live Demo Link](https://mstanley-me.github.io/awesomeBook/)
 
-
-## Getting Started
-
-To get a local copy up and running follow these simple example steps.
 
 👤 **Author I**
 - Stanley SIMEON
