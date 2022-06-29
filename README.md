@@ -12,7 +12,7 @@
 
 ## Live Demo
 
-- [Live Demo Link](https://mstanley-me.github.io/awesomeBook/)
+- [Live Demo Link](https://stanleySimeon.github.io/awesomeBook/)
 
 
 👤 **Author I**
